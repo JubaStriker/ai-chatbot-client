@@ -1,7 +1,4 @@
 /* src/App.css */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 
 /* Custom scrollbar for chat messages */
 .chat-messages::-webkit-scrollbar {
