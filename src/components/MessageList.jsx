@@ -14,7 +14,7 @@ function MessageList({ messages, isTyping }) {
   }, [messages, isTyping]);
 
   return (
-    <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
+    <div className="h-full overflow-y-auto p-6 space-y-4 bg-gray-50">
       {messages.length === 0 && (
         <div className="text-center py-12">
           <div className="bg-white rounded-2xl p-8 shadow-sm">

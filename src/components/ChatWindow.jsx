@@ -7,8 +7,8 @@ function ChatWindow({ messages, onSendMessage, onClose, onClear, isTyping, isLoa
   const [isMinimized, setIsMinimized] = useState(false);
 
   return (
-    <div className={`fixed bottom-0 right-4 w-96 bg-white rounded-t-2xl shadow-2xl z-50 transition-all duration-300 ${
-      isMinimized ? 'h-14' : 'h-[600px]'
+    <div className={`fixed bottom-4 right-4 w-96 bg-white rounded-2xl shadow-2xl z-50 transition-all duration-300 ${
+      isMinimized ? 'h-14' : 'h-[min(600px,calc(100vh-2rem))]'
     }`}>
       {/* Header */}
       <div className="bg-gradient-to-r from-primary to-blue-600 text-white px-6 py-4 rounded-t-2xl flex items-center justify-between">
@@ -57,10 +57,14 @@ function ChatWindow({ messages, onSendMessage, onClose, onClear, isTyping, isLoa
 
       {/* Chat Content */}
       {!isMinimized && (
-        <>
-          <MessageList messages={messages} isTyping={isTyping} />
-          <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
-        </>
+        <div className="flex flex-col h-full">
+          <div className="flex-1 overflow-hidden">
+            <MessageList messages={messages} isTyping={isTyping} />
+          </div>
+          <div className="flex-shrink-0">
+            <ChatInput onSendMessage={onSendMessage} isLoading={isLoading} />
+          </div>
+        </div>
       )}
     </div>
   );
