@@ -3,7 +3,7 @@ function ChatButton({ onClick }) {
   return (
     <button
       onClick={onClick}
-      className="fixed bottom-6 right-6 bg-gradient-to-r from-primary to-blue-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-40 group"
+      className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-700 to-indigo-900 text-white rounded-full p-4 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-40 group"
     >
       <div className="relative">
         <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@ function ChatButton({ onClick }) {
           </span>
         </div>
       </div>
-      <div className="absolute -top-12 right-0 bg-gray-900 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+      <div className="absolute -top-12 right-0 bg-gradient-to-r from-blue-800 to-indigo-900 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
         Chat with Assistant
       </div>
     </button>

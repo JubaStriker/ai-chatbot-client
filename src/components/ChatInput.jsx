@@ -22,7 +22,7 @@ function ChatInput({ onSendMessage, isLoading }) {
 
   return (
     <form onSubmit={handleSubmit} className="p-4 bg-white border-t border-gray-200">
-      <div className="flex items-end space-x-2">
+      <div className="flex items-center space-x-2">
         <div className="flex-1 relative">
           <textarea
             ref={inputRef}
@@ -51,7 +51,7 @@ function ChatInput({ onSendMessage, isLoading }) {
         <button
           type="submit"
           disabled={!input.trim() || isLoading}
-          className="p-3 bg-gradient-to-r from-primary to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-primary transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
+          className="p-3 bg-gradient-to-r from-blue-700 to-indigo-900 text-white rounded-xl hover:from-blue-600 hover:to-indigo-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
         >
           {isLoading ? (
             <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
