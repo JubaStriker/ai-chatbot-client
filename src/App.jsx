@@ -11,6 +11,9 @@ function App() {
   const [isTyping, setIsTyping] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState('checking');
 
+  const [sessionId, setSessionId] = useState(localStorage.getItem("sessionId") || null);
+  const wsRef = useRef(null);
+
   // Check backend health on mount
   useEffect(() => {
     checkBackendHealth();
@@ -29,6 +32,44 @@ function App() {
       console.error('Backend connection error:', error);
     }
   };
+
+   // --- CONNECT TO WEBSOCKET WHEN COMPONENT MOUNTS ---
+  useEffect(() => {
+    const ws = new WebSocket(`ws://localhost:8081?sessionId=${sessionId || ""}`);
+    wsRef.current = ws;
+
+    console.log(ws);
+
+    ws.onopen = () => {
+      console.log("✅ WebSocket connected");
+    };
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+
+      if (data.type === "session_established") {
+        setSessionId(data.sessionId);
+        localStorage.setItem("sessionId", data.sessionId);
+      }
+
+      if (data.type === "human_reply") {
+        // Add Slack human reply to messages
+        const slackMessage = {
+          id: Date.now() + Math.random(),
+          text: data.message,
+          sender: "human",
+          timestamp: new Date().toISOString(),
+          thread_ts: data.thread_ts
+        };
+        setMessages(prev => [...prev, slackMessage]);
+      }
+    };
+
+    ws.onclose = () => console.log("❌ WebSocket disconnected");
+    ws.onerror = (err) => console.error("WebSocket error:", err);
+
+    return () => ws.close();
+  }, []); 
 
   const sendMessage = async (message) => {
     if (!message.trim() || isLoading) return;
@@ -49,6 +90,7 @@ function App() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-session-id': sessionId || ''
         },
         body: JSON.stringify({ question: message })
       });
@@ -188,14 +230,6 @@ function App() {
         />
       )}
 
-      {/* Footer */}
-      <footer className="mt-20 bg-gradient-to-r from-blue-800 to-indigo-900 border-t border-blue-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-blue-200">
-            <p>© 2024 TransFi. Powered by AI Documentation Assistant</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

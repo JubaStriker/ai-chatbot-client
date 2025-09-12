@@ -7,8 +7,8 @@ function ChatWindow({ messages, onSendMessage, onClose, onClear, isTyping, isLoa
   const [isMinimized, setIsMinimized] = useState(false);
 
   return (
-    <div className={`fixed bottom-8 right-4 w-96 bg-white rounded-2xl shadow-2xl z-50 transition-all duration-300 ${
-      isMinimized ? 'h-14' : 'h-[min(600px,calc(100vh-4rem))]'
+    <div className={`fixed bottom-18 right-4 w-96 bg-white rounded-2xl shadow-2xl z-50 transition-all duration-300 ${
+      isMinimized ? 'h-14 ' : 'h-[min(600px,calc(100vh-4rem))]'
     }`}>
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-700 to-indigo-900 text-white px-6 py-4 rounded-t-2xl flex items-center justify-between">

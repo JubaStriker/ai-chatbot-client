@@ -32,7 +32,7 @@ function ChatInput({ onSendMessage, isLoading }) {
             placeholder="Type your question..."
             disabled={isLoading}
             rows="1"
-            className="w-full px-4 py-3 pr-12 bg-gray-50 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-3 pr-12 bg-gray-50 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ minHeight: '48px', maxHeight: '120px' }}
           />
           <div className="absolute right-2 bottom-2 flex items-center space-x-1">
@@ -51,7 +51,7 @@ function ChatInput({ onSendMessage, isLoading }) {
         <button
           type="submit"
           disabled={!input.trim() || isLoading}
-          className="p-3 bg-gradient-to-r from-blue-700 to-indigo-900 text-white rounded-xl hover:from-blue-600 hover:to-indigo-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
+          className="p-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700  rounded-sm text-white rounded-xl hover:from-blue-600 hover:to-indigo-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
         >
           {isLoading ? (
             <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
