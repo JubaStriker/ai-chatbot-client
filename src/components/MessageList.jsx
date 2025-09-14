@@ -24,7 +24,7 @@ function MessageList({ messages, isTyping }) {
               </svg>
             </div>
             <h4 className="text-lg font-semibold text-gray-900 mb-2">How can I help you today?</h4>
-            <p className="text-gray-600 mb-6">Ask me anything about TransFi's API, authentication, payments, or webhooks.</p>
+            <p className="text-gray-600 mb-6">Ask me anything about TransFi</p>
             
             <div className="space-y-2">
               <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-3">Quick Actions</p>

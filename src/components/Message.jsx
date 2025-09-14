@@ -12,7 +12,7 @@ function Message({ message }) {
             isUser
               ? 'bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 text-white rounded-br-sm'
               : isHuman
-              ? 'bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white rounded-bl-sm'
+              ? 'bg-gradient-to-r from-blue-200 via-blue-100 to-white rounded-bl-sm'
               : message.isError
               ? 'bg-red-100 text-red-800 border border-red-200 rounded-bl-sm'
               : 'bg-white text-gray-800 rounded-bl-sm'
